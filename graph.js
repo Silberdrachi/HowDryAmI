@@ -46,18 +46,24 @@ function update_graph(dryness) {
 	 * Calculate data
 	 */
 	var chartData = [];
+	var drawnVert = false;
 	for (var i = -5; i < 5.1; i += 0.1) {
 
-		dvalue = NormalDensityZx(i, 0, 1);
+		var dvalue = NormalDensityZx(i, 0, 1);
 
 		var dp = {
 			category: i,
 			value: dvalue
 		};
 
-		if ((Math.abs(dvalue - dryness) < 0.01) && (i < 0))  {
+		var pvalue = NormalDensityZx(i-1, 0, 1);
+		var nvalue = NormalDensityZx(i+1, 0, 1);
+		if (Math.abs(pvalue - dryness) - Math.abs(dvalue - dryness) >
+				Math.abs(dvalue - dryness) - Math.abs(nvalue - dryness) && 
+			(!drawnVert)) {
 			console.log("match!");
 			dp.vertical = dp.value;
+			drawnVert = true;
 		}
 		chartData.push(dp);
 	}
