@@ -9,7 +9,7 @@ function str_to_num(s) {
 }
 
 function format_number(bignum) {
-	if (Big(0).eq(bignum)) {
+	if (Decimal(0).eq(bignum)) {
 		return "Impossible";
 	} else {
 		return bignum.times(1000).toPrecision(9) + " \u2030"; // permille symbol: U+2030
