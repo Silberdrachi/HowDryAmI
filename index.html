@@ -37,7 +37,7 @@
 
 				<div class="input-group col-xl col-lg-4 col-md-8">
 					<div class="input-group-prepend">
-						<label class="input-group-text" for="chance">What's the chance of getting your thing?</label>
+						<label class="input-group-text" for="chance">Chances of success?</label>
 					</div>
 					<input type="text" class="form-control" id="chance" name="chance" min="0" max="1" step="0.01" value="0.5" onchange="update_dryness()" /> <!-- we're using text to support fractions because thanks javascript -->
 				 </div>
@@ -69,9 +69,13 @@
 			<div class="col-3"></div>
          </div>
 
-		<div class="outdata">
-			<div id="drynessGraph" > </div> <!--style="width: 0; height: 0;"> </div>-->
-		</div>
+		 <div class="row">
+            <div class="col-3"></div>
+            <div id="content" class="col-6 results-graph">
+				<div id="drynessGraph" > </div> <!--style="width: 0; height: 0;"> </div>-->
+			</div>
+			<div class="col-3"></div>
+	 	</div>
 
 	</body>
 </html>
