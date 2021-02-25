@@ -26,13 +26,13 @@
 		<h2 id="subtitle">Odds calculating site for discrete binomiality</h2>
 
 		<label for="chance">What's the chance of getting your thing?</label>
-		<input type="number" id="chance" name="chance" min="0" max="1" step="0.01" onchange="update_dryness()" />
+		<input type="number" id="chance" name="chance" min="0" max="1" step="0.01" value="0.5" onchange="update_dryness()" />
 
 		<label for="rolls">How many times have you rolled?</label>
-		<input type="number" id="rolls" name="rolls" min="0" onchange="update_dryness()" />
+		<input type="number" id="rolls" name="rolls" min="0" value="2" onchange="update_dryness()" />
 
 		<label for="desire">How many successes did you want?</label>
-		<input type="number" id="desire" name="desire" min="1" onchange="update_dryness()" />
+		<input type="number" id="desire" name="desire" min="1" value="1" onchange="update_dryness()" />
 
 		<label id="drynessField">0</label>
 	</body>
