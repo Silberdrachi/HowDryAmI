@@ -28,7 +28,7 @@ function update_dryness() {
 	drynessField.innerHTML = format_number(dryness);
 	zscoreField.innerHTML = prob_to_zscore(dryness);
 
-	update_graph(dryness);
+	update_graph(chance, dryness);
 
 	return dryness;
 }

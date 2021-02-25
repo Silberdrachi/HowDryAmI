@@ -5,16 +5,17 @@
 //----------------------------------------------------------------------------------------------
 const precision = 1/1000;
 
-function update_graph(dryness) {
+function update_graph(chance, dryness) {
 	var chartData = [];
 	var drawn = false;
+	const invchance = Math.round(1/chance);
 	for (var z=-3; z<=3; z+=precision) {
 		var dp = {
-			category: z,
-			value: cnorm(z, 0, 1),
+			category: (z <= 0) ? z * chance : z*invchance,
+			value: cnorm(z, 0, 1)*100,
 		};
 
-		if ( Math.abs(dp.value - dryness) < precision && (!drawn)) {
+		if ( Math.abs(dp.value/100 - dryness) < precision && (!drawn)) {
 			dp.vertical = dp.value
 			drawn = true;
 		}
@@ -29,11 +30,13 @@ function update_graph(dryness) {
 		"precision": 6,
 		"valueAxes": [{
 			"gridAlpha": 0.2,
-			"dashLength": 0
+			"dashLength": 0,
+			"min": 0,
+			"max": 1,
+			"strictMinMax": true
 		}],
 		"startDuration": 1,
 		"graphs": [{
-			"balloonText": "[[category]]: <b>[[value]]</b>",
 			"lineThickness": 3,
 			"valueField": "value"
 		}, {
@@ -42,12 +45,12 @@ function update_graph(dryness) {
 			"type": "column",
 			"valueField": "vertical",
 			"fixedColumnWidth": 2,
-			"labelText": "[[value]]",
+			"labelText": "[[value]]\u0025",
 			"labelOffset": 20
 		}],
 		"chartCursor": {
-			"categoryBalloonEnabled": false,
-			"cursorAlpha": 0,
+			"categoryBalloonEnabled": true,
+			"cursorAlpha": 0.1,
 			"zoomable": false
 		},
 		"categoryField": "category",
@@ -56,7 +59,7 @@ function update_graph(dryness) {
 			"startOnAxis": true,
 			"tickLength": 5,
 			"labelFunction": function(label, item) {
-				return '' + Math.round(item.dataContext.category * 10) / 10;
+				return Math.round(item.dataContext.category * 10) / 10 + ''; // + '\u03C3';
 			}
 		}
 
