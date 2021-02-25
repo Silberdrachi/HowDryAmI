@@ -13,7 +13,9 @@ function fact(n) {
 }
 
 function Comb(n, k) {
-	return fact(n).div(fact(k).times(fact(n-k)));
+	return fact(n).div(
+			fact(n-k)
+		);
 }
 
 function calculate_dryness(chance, rolls, desire) {
