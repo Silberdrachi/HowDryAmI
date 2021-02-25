@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>How Dry Am I?</title>
-      <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-      <meta content="utf-8" http-equiv="encoding">
-      <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' >
-      
-      <!-- Vue Stuff -->
-      <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-      
-      <!-- Bootstrap Stuff 4.6 -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-      
-      <!-- Site specific style --> 
-      <link rel="stylesheet" href="style.css">
+	<head>
+		<title>How Dry Am I?</title>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' >
 
-	<!-- functions we need -->
-	<script type="text/javascript" src="data.js" ></script>
+		<!-- Vue Stuff -->
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
-   </head>
-   <body onload="update_dryness()">
-         <h1>How Dry Am I?</h1>
-         <p>Odds calculating site for binomial math</p>
-		 <label for="chance"> What's the chance of getting your thing?</label>
-		 <input type="number" id="chance" name="chance" onchange="update_dryness()" />
+		<!-- Bootstrap Stuff 4.6 -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+		<!-- Site specific style --> 
+		<link rel="stylesheet" href="style.css">
+
+		<!-- functions we need -->
+		<script type="text/javascript" src="data.js" ></script>
+
+	</head>
+	<body onload="update_dryness()">
+		<h1 id="title">How Dry Am I?</h2>
+		<h2 id="subtitle">Odds calculating site for discrete binomiality</h2>
+
+		<label for="chance">What's the chance of getting your thing?</label>
+		<input type="number" id="chance" name="chance" min="0" max="1" onchange="update_dryness()" />
+
 		<label for="rolls">How many times have you rolled?</label>
-		<input type="number" id="rolls" name="rolls" onchange="update_dryness()" />
+		<input type="number" id="rolls" name="rolls" min="0" onchange="update_dryness()" />
+
+		<label for="desire">How many successes did you want?</label>
+		<input type="number" id="desire" name="desire" min="1" onchange="update_dryness()" />
+
+
 		<label id="drynessField">0</label>
-   </body>
+	</body>
 </html>
 
