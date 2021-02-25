@@ -11,7 +11,7 @@ function update_graph(dryness) {
 	for (var z=-3; z<=3; z+=precision) {
 		var dp = {
 			category: z,
-			value: dnorm(z, 0, 1),
+			value: cnorm(z, 0, 1),
 		};
 
 		if ( Math.abs(dp.value - dryness) < precision && (!drawn)) {

@@ -24,3 +24,19 @@ function dnorm(x, mean=0, sd=1) {
 			) / (Math.sqrt(2*Math.PI) * sd);
 }
 
+function cnorm(x, mean=0, sd=1) {
+	var z = (x-mean)/Math.sqrt(2*sd**2);
+    var t = 1/(1+0.3275911*Math.abs(z));
+    var a1 =  0.254829592;
+    var a2 = -0.284496736;
+    var a3 =  1.421413741;
+    var a4 = -1.453152027;
+    var a5 =  1.061405429;
+    var erf = 1-(((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*Math.exp(-z*z);
+    var sign = 1;
+    if(z < 0)
+    {
+        sign = -1;
+    }
+    return (1/2)*(1+sign*erf);
+}
