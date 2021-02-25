@@ -5,6 +5,9 @@ function simple_calculate_dryness(chance, rolls) {
 }
 
 function fact(n) {
+	if (n == 0) return 0;
+	if (n > 10) return stirling_fact(n);
+
 	var out=new Big(1);
 	for (var i=new Big(2); i<=n; i++) {
 		out = out.times(i);
@@ -12,10 +15,22 @@ function fact(n) {
 	return out;
 }
 
+function stirling_fact(n) {
+	var n_pow_n = Big(n).pow(n);
+	var e_pow_neg_n = Math.exp(-n);
+	var sqrt_2pi_n = Big(n).times(2*Math.PI).sqrt();
+	var one_plus_twelth = Big(1).add(1/(12*n));
+	return n_pow_n.times(e_pow_neg_n).times(sqrt_2pi_n).times(one_plus_twelth);
+}
+
 function Comb(n, k) {
-	return fact(n).div(
-			fact(n-k)
-		);
+	// n! / (n-k)!
+	// effectively the same as (n downto k+1)!
+	var out = new Big(n);
+	for (var i=n-1; i>k; i--) {
+		out = out.times(i);
+	}
+	return out;
 }
 
 function probability_of_success(chance, rolls, desire) {
