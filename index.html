@@ -6,9 +6,6 @@
 		<meta content="utf-8" http-equiv="encoding">
 		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' >
 
-		<!-- Vue Stuff -->
-		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-
 		<!-- Bootstrap Stuff 4.6 -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -31,31 +28,46 @@
 
 	</head>
 	<body onload="update_dryness()">
-		<h1 id="title">How Dry Am I?</h2>
-		<h2 id="subtitle">Odds calculating site for discrete binomiality</h2>
+		<h1 id="title" class="text-white text-center">How Dry Am I?</h1>
+		<h2 id="subtitle" class="text-white text-center">Odds calculating site for discrete binomiality</h2>
 
-		<div class="userdata">
-			<label for="chance">What's the chance of getting your thing?</label>
-			<input type="text" id="chance" name="chance" min="0" max="1" step="0.01" value="0.5" onchange="update_dryness()" /> <!-- we're using text to support fractions because thanks javascript -->
-		</div>
+		<div class="row">
+            <div class="col-2"></div>
+            <div id="content" class="col-8">
 
-		<div class="userdata">
-			<label for="rolls">How many times have you rolled?</label>
-			<input type="number" id="rolls" name="rolls" min="0" value="2" onchange="update_dryness()" />
-		</div>
+				<div class="input-group col-xl col-lg-4 col-md-8">
+					<div class="input-group-prepend">
+						<label class="input-group-text" for="chance">What's the chance of getting your thing?</label>
+					</div>
+					<input type="text" class="form-control" id="chance" name="chance" min="0" max="1" step="0.01" value="0.5" onchange="update_dryness()" /> <!-- we're using text to support fractions because thanks javascript -->
+				 </div>
 
-		<div class="userdata">
-			<label for="desire">How many successes did you want?</label>
-			<input type="number" id="desire" name="desire" min="1" value="1" onchange="update_dryness()" />
+				 <div class="input-group col-xl col-lg-4 col-md-8">
+					<div class="input-group-prepend">
+						<label class="input-group-text" for="rolls">How many times have you rolled?</label>
+					</div>
+					<input type="number" class="form-control" id="rolls" name="rolls" min="0" value="2" onchange="update_dryness()" />
+				 </div>
+
+				 <div class="input-group col-xl col-lg-4 col-md-8">
+					<div class="input-group-prepend">
+						<label class="input-group-text" for="desire">How many successes did you want?</label>
+					</div>
+					<input type="number" class="form-control" id="desire" name="desire" min="1" value="1" onchange="update_dryness()" />
+				 </div>
+				 
+			</div>
+			<div class="col-2"></div>
 		</div>
 		
-		<div class="outdata">
-			<span>How many in 1000 share your demise?</span><label id="drynessField">0</label>
-		</div> 
-
-		<div class="outdata">
-			<span>Associated z-score in N(0, 1)</span><label id="zscoreField">0</label>
-		</div>
+		<div class="row">
+            <div class="col-3"></div>
+            <div id="content" class="col-6 results-box">
+               <p class="text-center">How many in 1000 share your demise? <label id="drynessField">0</label></p>
+			   <p class="text-center">Associated z-score in N(0, 1): <label id="zscoreField">0</label></p>
+			</div>
+			<div class="col-3"></div>
+         </div>
 
 		<div class="outdata">
 			<div id="drynessGraph" > </div> <!--style="width: 0; height: 0;"> </div>-->
@@ -63,4 +75,3 @@
 
 	</body>
 </html>
-
