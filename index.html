@@ -24,6 +24,8 @@
 		<link rel="stylesheet" href="style.css">
 
 		<!-- functions we need -->
+		<script type="text/javascript" src="probability.js" ></script>
+		<script type="text/javascript" src="statistics.js" ></script>
 		<script type="text/javascript" src="data.js" ></script>
 		<script type="text/javascript" src="graph.js" ></script>
 
@@ -49,7 +51,14 @@
 		
 		<div class="outdata">
 			<span>How many in 1000 share your demise?</span><label id="drynessField">0</label>
-			<div id="drynessGraph" style="width: 0; height: 0;"> </div>
+		</div> 
+
+		<div class="outdata">
+			<span>Associated z-score in N(0, 1)</span><label id="zscoreField">0</label>
+		</div>
+
+		<div class="outdata">
+			<div id="drynessGraph" > </div> <!--style="width: 0; height: 0;"> </div>-->
 		</div>
 
 	</body>
