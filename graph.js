@@ -85,31 +85,20 @@ function update_graph(dryness) {
 	 */
 	var chartData = [];
 
-	var roundedDryness = Math.round(dryness*1000)/1000;
-	var zDryness = NormSInv(roundedDryness);
-	for (var i = -5; i < zDryness; i += 0.001) {
+	var precision = 1/1000;
+	for (var i = -3; i <= 3; i += precision) {
 		var dp = {
 			category: i,
-			value: NormalDensityZx(i, 0, 1)
+			value: NormalDensityZx(i, 0, 1),
 		};
+
+		if ( Math.abs(dp.value - dryness) < precision/10) {
+			dp.vertical = dp.value
+		}
 
 		chartData.push(dp);
 	}
 
-	chartData.push({
-		category: zDryness,
-		value: roundedDryness,
-		vertical: roundedDryness
-	});
-
-	for (var i=zDryness; i <= 5; i += 0.001) {
-		var dp = {
-			category: i,
-			value: NormalDensityZx(i, 0, 1)
-		};
-
-		chartData.push(dp);
-	}
 	/**
 	 * Create a chart
 	 */
@@ -117,7 +106,7 @@ function update_graph(dryness) {
 		"type": "serial",
 		"theme": "light",
 		"dataProvider": chartData,
-		"precision": 2,
+		"precision": 6,
 		"valueAxes": [{
 			"gridAlpha": 0.2,
 			"dashLength": 0
