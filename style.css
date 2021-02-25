@@ -1,3 +1,10 @@
 body{
     background: #C39239;
 }
+
+#drynessGraph {
+	width: 100%;
+	height: 500px;
+	font-size: 11px;
+}
+

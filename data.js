@@ -36,8 +36,11 @@ function update_dryness() {
 	var desire = document.getElementById("desire").value;
 
 	var drynessField = document.getElementById("drynessField");
+	
+	var dryness = calculate_dryness(chance, rolls, desire);
+	drynessField.innerHTML = dryness;
 
-	drynessField.innerHTML = calculate_dryness(chance, rolls, desire);
+	update_graph(dryness);
 
 	return;
 }
