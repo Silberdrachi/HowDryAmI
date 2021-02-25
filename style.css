@@ -22,6 +22,11 @@ body{
 	padding: 5px;
 }
 
+.row {
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
 .results-box {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
