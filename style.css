@@ -1,3 +1,8 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
 body{
     background: #C39239;
 }
@@ -8,3 +13,28 @@ body{
 	font-size: 11px;
 }
 
+.userdata {
+	display: block;
+	padding: 5px;
+}
+
+.userdata label {
+	width: 25em;
+}
+
+.userdata input {
+	width: 10em;
+	height: 50px;
+}
+
+.outdata {
+	display: block;
+	padding: 5px;
+}
+.outdata span {
+	display: inline-block;
+	width: 25em;
+}
+
+.outdata label {
+}

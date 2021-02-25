@@ -17,6 +17,9 @@
 		<!-- amcharts dependency for graph -->
 		<script src="https://www.amcharts.com/lib/3/amcharts.js"></script><script src="https://www.amcharts.com/lib/3/serial.js"></script>
 
+		<!-- big numbers -->
+		<script src='https://cdn.jsdelivr.net/npm/big.js@6.0.0/big.js'></script>
+
 		<!-- Site specific style --> 
 		<link rel="stylesheet" href="style.css">
 
@@ -29,17 +32,25 @@
 		<h1 id="title">How Dry Am I?</h2>
 		<h2 id="subtitle">Odds calculating site for discrete binomiality</h2>
 
-		<label for="chance">What's the chance of getting your thing?</label>
-		<input type="number" id="chance" name="chance" min="0" max="1" step="0.01" value="0.5" onchange="update_dryness()" />
+		<div class="userdata">
+			<label for="chance">What's the chance of getting your thing?</label>
+			<input type="text" id="chance" name="chance" min="0" max="1" step="0.01" value="0.5" onchange="update_dryness()" /> <!-- we're using text to support fractions because thanks javascript -->
+		</div>
 
-		<label for="rolls">How many times have you rolled?</label>
-		<input type="number" id="rolls" name="rolls" min="0" value="2" onchange="update_dryness()" />
+		<div class="userdata">
+			<label for="rolls">How many times have you rolled?</label>
+			<input type="number" id="rolls" name="rolls" min="0" value="2" onchange="update_dryness()" />
+		</div>
 
-		<label for="desire">How many successes did you want?</label>
-		<input type="number" id="desire" name="desire" min="1" value="1" onchange="update_dryness()" />
-
-		<span>What's the chance of being this unlucky? Well: </span><label id="drynessField">0</label>
-		<div id="drynessGraph"> </div>
+		<div class="userdata">
+			<label for="desire">How many successes did you want?</label>
+			<input type="number" id="desire" name="desire" min="1" value="1" onchange="update_dryness()" />
+		</div>
+		
+		<div class="outdata">
+			<span>How many in 1000 share your demise?</span><label id="drynessField">0</label>
+			<div id="drynessGraph" style="width: 0; height: 0;"> </div>
+		</div>
 
 	</body>
 </html>
